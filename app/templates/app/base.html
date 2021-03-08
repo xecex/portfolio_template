@@ -1,0 +1,77 @@
+<!-- 静的ファイルの読み込み -->
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang = 'ja'>
+
+<head>
+    <meta charset = 'UTF-8'>
+    <meta name = 'viewport' content = 'width = device - width, initial - scale = 1.0'>
+
+    <!-- bootstrapのcssを読み込む -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- アイコンを使用するため、font-awesomeのcssを読み込む -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha512-L7MWcK7FNPcwNqnLdZq86lTHYLdQqZaz5YcAgE+5cnGmlw8JT03QB2+oxL100UeB6RlzZLUxCGSS4/++mNZdxw==" crossorigin="anonymous" />
+
+    <!-- style.cssを読み込む -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>ポートフォリオ</title>
+</head>
+
+<body>
+    <nav class = 'navbar navbar-expand-lg'>
+        <div class = 'container'>
+            <a href = '/' class = 'navbar-brand'>
+
+                <!-- ロゴ画像 -->
+                <!-- imgフォルダに画像フォイルを追加しておく -->
+                <!-- {% static '～' %}にある'～'の部分はimgフォルダに追加した画像ファイル名を入力 -->
+
+                <img src = "{% static 'img/sample_image.png' %}" alt = '' width = '80' height = '80'>
+            </a>
+            <ul class = 'navbar-nav'>
+                <li class = 'nav-item mr-3'>
+                    <a href = '/' class = 'nav-link nav-color'>HOME</a>
+                </li>
+                <li class = 'nav-item mr-3'>
+
+                    <!-- プロフィールページへのリンクを貼る -->
+
+                    <a href = "{% url 'about' %}" class = 'nav-link nav-color'>ABOUT</a>
+                </li>
+                <li class = 'nav-item'>
+
+                    <!-- コンタクトページへのリンクを貼る -->
+
+                    <a href = "{% url 'contact' %}" class = 'nav-link nav-color'>CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class = 'container'>
+            {% block content %}
+
+            <!-- ここに動的に変化するコンテンツが入る -->
+
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="py-4 bg-dark text-center">
+        <small class="text-white">&copy; 2021 Kifune</small>
+    </footer>
+
+    <!-- javascript用のブロックを追加 -->
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

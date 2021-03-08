@@ -1,0 +1,6 @@
+# requirements.txtには開発に必要なパッケージを記載する
+# 'pip install -r requirements.txt'とコマンドを入力すると、ここに記載されたパッケージが仮想環境にインストールされる
+
+Django ~= 2.2.17
+Pillow ~= 8.1.0
+django-widget-tweaks ~= 1.4.8

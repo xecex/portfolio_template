@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<!-- タイトルの表示 -->
+
+<h3 class = 'mb-4'>{{ work_data.title }}</h3>
+<div class = 'card top mb-4'>
+    <img src = '{{ work_data.image.url }}' alt = ''>
+</div>
+
+<div class = "row">
+    <div class = "col-sm-4 mb-4">
+        <h4 class = 'mb-3'>INFORMATION</h4>
+        <p>
+
+            <!-- アイコンの表示 -->
+
+            <i class = "fas fa-laptop-code mr-2"></i>
+            <span class = "font-weight-bolder">SKILLS：</span>
+
+            <!-- スキルを表示 -->
+
+            {{ work_data.skill }}
+        </p>
+        <hr>
+        <p>
+            <i class = "fab fa-github mr-2"></i>
+            <span class = "font-weight-bolder">GITHUB：</span>
+
+            <!-- 作品のurlが登録されている場合、リンク先を別ウインドウで表示 -->
+
+            {% if work_data.url %}
+                <a href = '{{ work_data.url }}' target="_blank" class = 'link-color'>Link</a>
+
+            <!-- urlがない場合はプライベートと表示 -->
+
+            {% else %}
+                Private
+
+            {% endif %}
+        </p>
+        <hr>
+        <p>
+            <i class = "far fa-calendar-alt mr-2"></i>
+            <span class = "font-weight-bolder">CREATED：</span>
+            {{ work_data.created }}
+        </p>
+        <hr>
+    </div>
+    <div class="col-sm8 mb-5">
+        <h4 class="mb-3">PROJECT DESCRIPTION</h4>
+
+        <!-- linebreaksbrは改行をbrタグに変更してくれる -->
+
+        <p>{{ work_data.description|linebreaksbr }}</p>
+    </div>
+</div>
+{% endblock %}
